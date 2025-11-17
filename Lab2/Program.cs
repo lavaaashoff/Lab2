@@ -9,61 +9,71 @@ namespace Lab2
         static void Main(string[] args)
         {
             int choose;
+            Console.WriteLine("Выберите задание (1 - задание с перегрузкой операцией, 2 - задание с наследованием): ");
             choose = int.TryParse(int.Parse(Console.ReadLine()).ToString(), out choose) ? choose : 0;
 
             switch (choose)
             {
                 case 1:
-                    Console.WriteLine("Замена последнего символа");
-                    Password pass1 = new Password("1234567f");
-                    Console.WriteLine($"Изначальный пароль: {pass1.Pword}");
-                    pass1 = pass1 - 'g';
-                    Console.WriteLine($"Замена последнего символа на g: {pass1.Pword}");
+                    try
+                    {
+                        Console.WriteLine("Замена последнего символа");
+                        Password pass1 = new Password("1234567f");
+                        Console.WriteLine($"Изначальный пароль: {pass1.Pword}");
+                        pass1 = pass1 - 'g';
+                        Console.WriteLine($"Замена последнего символа на g: {pass1.Pword}");
 
-                    Console.WriteLine($"\nСравнение длин паролей");
-                    Password pass2 = new Password("1234567g");
-                    Console.WriteLine($"Длина первого пароля: {pass1.Pword.Length}");
-                    Console.WriteLine($"Длина второго пароля: {pass2.Pword.Length}");
-                    Console.WriteLine("Длина " + (pass1 > pass2 ? "первого " : "второго ") + "пароля больше");
+                        Console.WriteLine($"\nСравнение длин паролей");
+                        Password pass2 = new Password("1234567g");
+                        Console.WriteLine($"Длина первого пароля: {pass1.Pword.Length}");
+                        Console.WriteLine($"Длина второго пароля: {pass2.Pword.Length}");
+                        Console.WriteLine("Длина " + (pass1 > pass2 ? "первого " : "второго ") + "пароля больше");
 
-                    Console.WriteLine("\nСравнение паролей");
-                    Console.WriteLine($"Первый пароль: {pass1.Pword}");
-                    Console.WriteLine($"Второй пароль: {pass2.Pword}");
-                    Console.WriteLine("Пароли " + (pass1 == pass2 ? "совпадают" : "не совпадают"));
+                        Console.WriteLine("\nСравнение паролей");
+                        Console.WriteLine($"Первый пароль: {pass1.Pword}");
+                        Console.WriteLine($"Второй пароль: {pass2.Pword}");
+                        Console.WriteLine("Пароли " + (pass1 == pass2 ? "совпадают" : "не совпадают"));
 
-                    Console.WriteLine("\nСброс пароля по умолчанию");
-                    Console.WriteLine($"Изначальный пароль: {pass1.Pword}");
-                    pass1++;
-                    Console.WriteLine($"Пароль после сброса: {pass1.Pword}");
+                        Console.WriteLine("\nСброс пароля по умолчанию");
+                        Console.WriteLine($"Изначальный пароль: {pass1.Pword}");
+                        pass1++;
+                        Console.WriteLine($"Пароль после сброса: {pass1.Pword}");
 
-                    Console.WriteLine("\nПроверка пароля на стойкость");
-                    Console.WriteLine($"Пароль: {pass1.Pword}");
+                        Console.WriteLine("\nПроверка пароля на стойкость");
+                        Console.WriteLine($"Пароль: {pass1.Pword}");
 
-                    if (pass1)
-                        Console.WriteLine("Пароль стойкий");
-                    else
-                        Console.WriteLine("Пароль не стойкий");
+                        if (pass1)
+                            Console.WriteLine("Пароль стойкий");
+                        else
+                            Console.WriteLine("Пароль не стойкий");
 
-                    Password pass3 = new Password("1");
-                    Console.WriteLine($"\nПроверка пароля на стойкость");
-                    Console.WriteLine($"Пароль: {pass3.Pword}");
-                    if (pass3)
-                        Console.WriteLine("Пароль стойкий");
-                    else
-                        Console.WriteLine("Пароль не стойкий");
+                        Password pass3 = new Password("1");
+                        Console.WriteLine($"\nПроверка пароля на стойкость");
+                        Console.WriteLine($"Пароль: {pass3.Pword}");
+                        if (pass3)
+                            Console.WriteLine("Пароль стойкий");
+                        else
+                            Console.WriteLine("Пароль не стойкий");
 
-                    Console.WriteLine("\nПолучение среднего символа пароля");
-                    Console.WriteLine($"Пароль: {pass1.Pword}\nЕго средний символ: {pass1.GetMediumChar()}");
-                    Console.WriteLine($"Пароль: {pass2.Pword}\nЕго средний символ: {pass2.GetMediumChar()}");
+                        Console.WriteLine("\nПолучение среднего символа пароля");
+                        Console.WriteLine($"Пароль: {pass1.Pword}\nЕго средний символ: {pass1.GetMediumChar()}");
+                        Console.WriteLine($"Пароль: {pass2.Pword}\nЕго средний символ: {pass2.GetMediumChar()}");
 
-                    Console.WriteLine("\nПроверка допустимой длины");
-                    Console.WriteLine($"Пароль: {pass1.Pword}");
-                    Console.WriteLine(pass1.CorrectLength() ? "Длина допустима" : "Длина недопустима");
+                        Console.WriteLine("\nПроверка допустимой длины");
+                        Console.WriteLine($"Пароль: {pass1.Pword}");
+                        Console.WriteLine(pass1.CorrectLength() ? "Длина допустима" : "Длина недопустима");
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine($"Ошибка: {ex.Message}");
+                    }
                     break;
 
                 case 2:
-                    Person[] people =
-                        {
+                    try
+                    {
+                        Person[] people =
+                            {
                             new Servant("Alex", "Smith", 20, "Marine", 2),
                             new Learner("Bob", "Johnson", 22, 3.5m, 2, "University"),
                             new Worker("Charlie", "Brown", 40, "Eltex", "Engineer"),
@@ -73,21 +83,25 @@ namespace Lab2
                             new Programmer("Grace", "Lee", 28, "TechCorp", "Developer", "Java", 5)
                         };
 
-                    foreach (var person in people)
-                    {
-                        Console.WriteLine(person.ToString());
+                        foreach (var person in people)
+                        {
+                            Console.WriteLine(person.ToString());
+                        }
+
+                        Console.WriteLine(people[0].Equals(new Servant("Alex", "Smith", 20, "Navy", 1))
+                            ? "\nПервый и второй солдаты равны"
+                            : "\nПервый и второй солдаты не равны");
+
+                        Console.WriteLine(people[0].Equals(new Servant("Alex", "Smith", 20, "Marine", 2))
+                            ? "\nПервый и второй солдаты равны"
+                            : "\nПервый и второй солдаты не равны");
+
+                        Console.WriteLine(people[0].GetHashCode());
                     }
-
-                    Console.WriteLine(people[0].Equals(new Servant("Alex", "Smith", 20, "Navy", 1))
-                        ? "\nПервый и второй солдаты равны"
-                        : "\nПервый и второй солдаты не равны");
-
-                    Console.WriteLine(people[0].Equals(new Servant("Alex", "Smith", 20, "Marine", 2))
-                        ? "\nПервый и второй солдаты равны"
-                        : "\nПервый и второй солдаты не равны");
-
-                    Console.WriteLine(people[0].GetHashCode());
-
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine($"Ошибка: {ex.Message}");
+                    }
                     break;
             }
                 

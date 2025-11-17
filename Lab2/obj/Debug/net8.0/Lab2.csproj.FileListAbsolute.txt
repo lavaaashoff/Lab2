@@ -33,3 +33,4 @@ C:\Users\lavaaash\source\repos\Lab2\Lab2\Lab2\obj\Debug\net8.0\refint\Lab2.dll
 C:\Users\lavaaash\source\repos\Lab2\Lab2\Lab2\obj\Debug\net8.0\Lab2.pdb
 C:\Users\lavaaash\source\repos\Lab2\Lab2\Lab2\obj\Debug\net8.0\Lab2.genruntimeconfig.cache
 C:\Users\lavaaash\source\repos\Lab2\Lab2\Lab2\obj\Debug\net8.0\ref\Lab2.dll
+C:\Users\lavaaash\source\repos\Lab2\Lab2\Lab2\obj\Debug\net8.0\Lab2.sourcelink.json
